@@ -20,7 +20,7 @@ const Catalog = (props) => {
           </a>
 
           <div className="phones__btn-buy-wrapper">
-            <a className="btn btn-success">
+            <a className="btn btn-success" onClick={props.onBasket}>
               Add
             </a>
           </div>

@@ -4,6 +4,7 @@ import { getAll, getById } from './api/phone'
 import Basket from './Basket'
 import Filter from './Filter'
 import Catalog from './Catalog'
+import Viewer from './Viewer'
 
 import './App.css';
 
@@ -16,8 +17,18 @@ class App extends React.Component {
       phones: getAll(),
       selectedPhone: null,
       basketItems: [],
-    };
-  }
+      removeBasketItem: (remItem) => {
+          let tmpBasketItems = [].concat(this.state.basketItems);
+          tmpBasketItems.splice(remItem,1)
+          this.setState({basketItems: tmpBasketItems})
+        },
+      onPhoneSelected: (phoneId) => {
+                    this.setState({
+                      selectedPhone: getById(phoneId),
+                    });
+                  },
+
+}}
 
   render() {
     return (
@@ -26,7 +37,12 @@ class App extends React.Component {
           <div className="row">
             <div className="col-md-2">
               <Filter />
-              <Basket />
+              
+              <Basket
+              basketItems = {this.state.basketItems}
+              removeBasketItem = {this.state.removeBasketItem}
+              onPhoneSelected={this.state.onPhoneSelected} 
+              />
             </div>
 
             <div className="col-md-10">
@@ -38,15 +54,25 @@ class App extends React.Component {
                       selectedPhone: null,
                     });
                   }}
+                  onBasket={(phoneId) => {
+                  this.setState((prevState) => {
+                                            return {
+                                                basketItems: prevState.basketItems.concat(getById(phoneId)),
+                                            }
+                    })
+                  }}
                 />
               ) : (
                 <Catalog
                   phones={this.state.phones}
-                  onPhoneSelected={(phoneId) => {
-                    this.setState({
-                      selectedPhone: getById(phoneId),
-                    });
-                  }}
+                  onPhoneSelected={this.state.onPhoneSelected}
+                  onBasket={(phoneId) => {
+                  this.setState((prevState) => {
+                                            return {
+                                                basketItems: prevState.basketItems.concat(getById(phoneId)),
+                                            }
+                  })
+                }}
                 />
               ) }
             </div>
@@ -57,23 +83,6 @@ class App extends React.Component {
   }
 }
 
-const Viewer = (props) => (
-  <div>
-    <img className="phone" src={props.phone.images[0]}/>
-    <button onClick={props.onBack}>Back</button>
-    <button>Add to basket</button>
 
-    <h1>{props.phone.name}</h1>
-    <p>{props.phone.description}</p>
-
-    <ul className="phone-thumbs">
-      { props.phone.images.map(imageUrl => (
-        <li>
-          <img src={imageUrl}/>
-        </li>
-      )) }
-    </ul>
-  </div>
-);
 
 export default App;
