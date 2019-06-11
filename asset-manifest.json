@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/innerren/fe_on_feb19-phones-react-1.git/static/css/main.95ac9038.chunk.css",
-    "main.js": "/innerren/fe_on_feb19-phones-react-1.git/static/js/main.38e86f07.chunk.js",
-    "main.js.map": "/innerren/fe_on_feb19-phones-react-1.git/static/js/main.38e86f07.chunk.js.map",
-    "runtime~main.js": "/innerren/fe_on_feb19-phones-react-1.git/static/js/runtime~main.8778afca.js",
-    "runtime~main.js.map": "/innerren/fe_on_feb19-phones-react-1.git/static/js/runtime~main.8778afca.js.map",
-    "static/js/2.d6a534e5.chunk.js": "/innerren/fe_on_feb19-phones-react-1.git/static/js/2.d6a534e5.chunk.js",
-    "static/js/2.d6a534e5.chunk.js.map": "/innerren/fe_on_feb19-phones-react-1.git/static/js/2.d6a534e5.chunk.js.map",
-    "index.html": "/innerren/fe_on_feb19-phones-react-1.git/index.html",
-    "precache-manifest.642fb0be8defcb4e9cfb4b5795416260.js": "/innerren/fe_on_feb19-phones-react-1.git/precache-manifest.642fb0be8defcb4e9cfb4b5795416260.js",
-    "service-worker.js": "/innerren/fe_on_feb19-phones-react-1.git/service-worker.js",
-    "static/css/main.95ac9038.chunk.css.map": "/innerren/fe_on_feb19-phones-react-1.git/static/css/main.95ac9038.chunk.css.map"
+    "main.css": "/fe_on_feb19-phones-react-1/static/css/main.95ac9038.chunk.css",
+    "main.js": "/fe_on_feb19-phones-react-1/static/js/main.4487fc26.chunk.js",
+    "main.js.map": "/fe_on_feb19-phones-react-1/static/js/main.4487fc26.chunk.js.map",
+    "runtime~main.js": "/fe_on_feb19-phones-react-1/static/js/runtime~main.0b518788.js",
+    "runtime~main.js.map": "/fe_on_feb19-phones-react-1/static/js/runtime~main.0b518788.js.map",
+    "static/js/2.6408f43b.chunk.js": "/fe_on_feb19-phones-react-1/static/js/2.6408f43b.chunk.js",
+    "static/js/2.6408f43b.chunk.js.map": "/fe_on_feb19-phones-react-1/static/js/2.6408f43b.chunk.js.map",
+    "index.html": "/fe_on_feb19-phones-react-1/index.html",
+    "precache-manifest.183ed8d2340054b983b05264e957c03c.js": "/fe_on_feb19-phones-react-1/precache-manifest.183ed8d2340054b983b05264e957c03c.js",
+    "service-worker.js": "/fe_on_feb19-phones-react-1/service-worker.js",
+    "static/css/main.95ac9038.chunk.css.map": "/fe_on_feb19-phones-react-1/static/css/main.95ac9038.chunk.css.map"
   }
 }
