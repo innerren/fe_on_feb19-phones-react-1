@@ -20,7 +20,7 @@ const Catalog = (props) => {
           </a>
 
           <div className="phones__btn-buy-wrapper">
-            <a className="btn btn-success" onClick={props.onBasket}>
+            <a href="#addToBasket" className="btn btn-success" onClick={()=>(props.onBasket(phone.id))}>
               Add
             </a>
           </div>

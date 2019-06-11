@@ -17,18 +17,37 @@ class App extends React.Component {
       phones: getAll(),
       selectedPhone: null,
       basketItems: [],
-      removeBasketItem: (remItem) => {
-          let tmpBasketItems = [].concat(this.state.basketItems);
-          tmpBasketItems.splice(remItem,1)
-          this.setState({basketItems: tmpBasketItems})
-        },
-      onPhoneSelected: (phoneId) => {
-                    this.setState({
-                      selectedPhone: getById(phoneId),
-                    });
-                  },
-
 }}
+
+    onPhoneSelected = (phoneId) => {
+                      this.setState({
+                        selectedPhone: getById(phoneId),
+                      });
+                    };
+
+    onBasket = (phoneId) => {
+     this.setState((prevState) => { 
+                                    let dubletItem = prevState.basketItems.findIndex((item) => {return item.name === phoneId});
+                                    if (dubletItem === -1){
+                                    return {basketItems: [...prevState.basketItems, {name: phoneId, count: 1}]}
+                                  }else{
+                                    let tmpBasketItems = [].concat(prevState.basketItems);
+                                    tmpBasketItems[dubletItem].count++;
+                                    return {basketItems: tmpBasketItems}
+                                  }
+
+                                  })}
+    removeBasketItem = (remItem) => {
+              this.setState((prevState) => {
+                let tmpRemBasketItems = [].concat(prevState.basketItems);
+                  if (tmpRemBasketItems[remItem].count === 1){
+                    tmpRemBasketItems.splice(remItem,1)
+                  }else{
+                    tmpRemBasketItems[remItem].count--;
+                  }
+                  return {basketItems: tmpRemBasketItems}
+                })}
+
 
   render() {
     return (
@@ -40,8 +59,8 @@ class App extends React.Component {
               
               <Basket
               basketItems = {this.state.basketItems}
-              removeBasketItem = {this.state.removeBasketItem}
-              onPhoneSelected={this.state.onPhoneSelected} 
+              removeBasketItem = {this.removeBasketItem}
+              onPhoneSelected={this.onPhoneSelected} 
               />
             </div>
 
@@ -54,25 +73,13 @@ class App extends React.Component {
                       selectedPhone: null,
                     });
                   }}
-                  onBasket={(phoneId) => {
-                  this.setState((prevState) => {
-                                            return {
-                                                basketItems: prevState.basketItems.concat(getById(phoneId)),
-                                            }
-                    })
-                  }}
+                  onBasket={this.onBasket}
                 />
               ) : (
                 <Catalog
                   phones={this.state.phones}
-                  onPhoneSelected={this.state.onPhoneSelected}
-                  onBasket={(phoneId) => {
-                  this.setState((prevState) => {
-                                            return {
-                                                basketItems: prevState.basketItems.concat(getById(phoneId)),
-                                            }
-                  })
-                }}
+                  onPhoneSelected={this.onPhoneSelected}
+                  onBasket={this.onBasket}
                 />
               ) }
             </div>

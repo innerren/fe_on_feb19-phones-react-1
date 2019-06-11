@@ -8,11 +8,10 @@ class Basket extends React.Component {
           <ul>
               {this.props.basketItems.map((item,remId) => (
                 <li key={remId}>
-                  <a onClick={() => {this.props.onPhoneSelected(item.id)}}>
-                    {item.name}
+                  <a href="#phone" onClick={() => {this.props.onPhoneSelected(item.name)}}>
+                    {(item.count===1)?item.name:(item.name + ' ' + item.count)}
                   </a>
                   <button onClick={() => {
-                    console.log(remId);
                     this.props.removeBasketItem(remId);
                 }}>x</button>
                 </li>
