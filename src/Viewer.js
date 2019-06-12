@@ -14,17 +14,19 @@ class Viewer extends React.Component {
         }
 
     render() {
+      const {phone, onBack, onBasket} = this.props;
+      const imageId = this.state.imageId;
        return (
           <div>
-            <img alt="Large_Image" className="phone" key={this.state.imageId}  src={this.props.phone.images[this.state.imageId]}/>
-            <button onClick={this.props.onBack}>Back</button>
-            <button  onClick={()=>(this.props.onBasket(this.props.phone.id))}>Add to basket</button>
+            <img alt="Large_Image" className="phone" key={imageId}  src={phone.images[imageId]}/>
+            <button onClick={onBack}>Back</button>
+            <button  onClick={()=>(onBasket(phone.id))}>Add to basket</button>
 
-            <h1>{this.props.phone.name}</h1>
-            <p>{this.props.phone.description}</p>
+            <h1>{phone.name}</h1>
+            <p>{phone.description}</p>
 
             <ul className="phone-thumbs">
-              { this.props.phone.images.map((imageUrl, id) => (
+              { phone.images.map((imageUrl, id) => (
                 <li key={id} >
                   <img alt="small_Image" src={imageUrl} onClick={() => {this.selectImage(id)}} />
                 </li>

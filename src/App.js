@@ -31,21 +31,27 @@ class App extends React.Component {
                                     if (dubletItem === -1){
                                     return {basketItems: [...prevState.basketItems, {name: phoneId, count: 1}]}
                                   }else{
-                                    let tmpBasketItems = [].concat(prevState.basketItems);
-                                    tmpBasketItems[dubletItem].count++;
+                                    let tmpBasketItems = [...prevState.basketItems];
+                                    tmpBasketItems[dubletItem] = {
+                                      ...tmpBasketItems[dubletItem],
+                                      count: tmpBasketItems[dubletItem].count +1
+                                    }
                                     return {basketItems: tmpBasketItems}
                                   }
 
                                   })}
     removeBasketItem = (remItem) => {
               this.setState((prevState) => {
-                let tmpRemBasketItems = [].concat(prevState.basketItems);
-                  if (tmpRemBasketItems[remItem].count === 1){
-                    tmpRemBasketItems.splice(remItem,1)
+                let tmpBasketItems = [...prevState.basketItems];
+                  if (tmpBasketItems[remItem].count === 1){
+                    tmpBasketItems.splice(remItem,1)
                   }else{
-                    tmpRemBasketItems[remItem].count--;
+                    tmpBasketItems[remItem] = {
+  ...tmpBasketItems[remItem],
+  count: tmpBasketItems[remItem].count - 1
+}
                   }
-                  return {basketItems: tmpRemBasketItems}
+                  return {basketItems: tmpBasketItems}
                 })}
 
 
